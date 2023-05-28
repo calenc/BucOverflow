@@ -1,0 +1,54 @@
+﻿<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+@{
+    if (ViewBag.firstLogin == true)
+    {
+        <script>
+            $(document).ready(function ()
+            {
+            $("#myModal").modal('show');
+            });
+        </script>   
+    }
+}
+
+<div id ="myModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title w-100"><strong>DISCLAIMER</strong></h5>
+            </div>
+            <div class="modal-body" style="text-align:center">
+                <p>
+                    Welcome to BucOverflow, a webpage designed to provide a platform for students to ask questions and receive answers from other students about ETSU.
+                    We strive to maintain a safe and respectful environment for all users, and as such, we have implemented moderation policies to ensure that all content is appropriate for a general audience.
+                    We kindly request that all users refrain from using offensive language, hate speech, or discriminatory remarks. Any content that violates our policies will be removed,
+                    and users who repeatedly violate our policies will be banned from using our platform. We also reserve the right to remove any content that is deemed inappropriate or irrelevant to the purpose of our website.
+                    Please note that the opinions and answers provided by our users are solely their own and do not reflect the opinions of BucOverflow or its moderators. We do not endorse any particular answer,
+                    nor do we guarantee the accuracy or completeness of any information provided. By using BucOverflow, you agree to comply with our moderation policies and terms of use.
+                    We appreciate your cooperation in helping us maintain a safe and respectful community for all students and as always GO BUCS!
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+ @*
+        <div class="text-center">
+            <h1><strong>DISCLAIMER</strong></h1>
+            <p>
+                Welcome to BucOverflow, a webpage designed to provide a platform for students to ask questions and receive answers from other students about ETSU.
+                We strive to maintain a safe and respectful environment for all users, and as such, we have implemented moderation policies to ensure that all content is appropriate for a general audience.
+                We kindly request that all users refrain from using offensive language, hate speech, or discriminatory remarks. Any content that violates our policies will be removed,
+                and users who repeatedly violate our policies will be banned from using our platform. We also reserve the right to remove any content that is deemed inappropriate or irrelevant to the purpose of our website.
+                Please note that the opinions and answers provided by our users are solely their own and do not reflect the opinions of BucOverflow or its moderators. We do not endorse any particular answer,
+                nor do we guarantee the accuracy or completeness of any information provided. By using BucOverflow, you agree to comply with our moderation policies and terms of use.
+                We appreciate your cooperation in helping us maintain a safe and respectful community for all students and as always GO BUCS!
+            </p>
+        </div>
+    </div>*@

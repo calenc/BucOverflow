@@ -1,0 +1,64 @@
+﻿@{
+    List<QuestionModel> questions = new List<QuestionModel>();
+    questions = ViewBag.questions;
+}
+
+<div class="text-center">
+    <br />
+    <h1 class="display-4"><strong>Latest Questions</strong></h1>
+</div>
+
+<div class="dropdown" style="padding-inline:10%; padding-block: 4%">
+    <button class="btn btn-secondary dropdown-toggle" style="float:left;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Filter
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+    <button class="btn btn-secondary dropdown-toggle" style="float: left; margin-left: 1rem" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Sort
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+    <button type="button"
+            style="float:right"
+            class="btn btn-secondary"
+            onclick="location.href='@Url.Action("NewQuestion", "Question")'">
+        New Question
+    </button>
+</div>
+
+@{
+    if (questions.Count == 0)
+    {
+        <div class="text-center">
+            <p style="padding: 1%;">
+                <h2>There are no questions at this time.</h2>
+            </p>
+        </div>
+        <br />
+        <div />
+        <br />
+    }
+    else
+    {
+        foreach (var q in questions)
+        {
+            <div style="padding-inline:10%; padding-block: 0.5rem">
+                <button type="button"
+                        style="width: 100%; display:inline-block; border: 1px solid darkgrey; text-align: left"
+                        class="btn btn-default active"
+                        onclick="location.href='@Url.Action("ViewQuestion", "Question", new { questionID = q.QuestionID })'">
+                    <h3>@Html.Raw(q.Title)</h3>
+                    <h6 style="text-align: right; display: inline">Date Asked: @Html.Raw(q.DateAsked)</h6>
+                </button>
+
+            </div>
+        }
+    }
+}

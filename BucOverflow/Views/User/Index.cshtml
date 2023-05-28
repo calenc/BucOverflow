@@ -1,0 +1,13 @@
+﻿@model BucOverflow.Models.MailModel
+@{
+}
+
+<form method="post" action="@Url.Action("Index", "User")">
+    <input type="text" name="To" />
+    <br />
+    <input type="text" name="Subject" />
+    <br />
+    <input type="text" name="Body" />
+    <br />
+    <button class="btn btn-secondary" type="submit">Send Email</button>
+</form>

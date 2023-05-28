@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] BucOverflow</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BucOverflow.styles.css" asp-append-version="true" />
+    <link rel="icon" type="image/x-icon" href="/Images/favicon.png" sizes="32x32">
+    <link rel="icon" type="image/x-icon" href="/Images/favicon.png" sizes="16x16">
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #696969;">
+            <div class="container-fluid">
+                <a class="ms-auto" href="@Url.Action("Index", "Home")">
+                    <img src="/Images/BucOverflowHeader.png" alt="" width="35%" height="35%">
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto" style="display:flex">
+                        <li class="nav-item" style="padding-top:0.75rem">
+                            <a class="nav-link" href="@Url.Action("Index", "Home")"><h4>Home</h4></a>
+                        </li>
+                        <li class="nav-item" style="padding-top:0.75rem">
+                            <a class="nav-link" aria-current="page" href="@Url.Action("QuestionList", "Forum")"><h4>Forum</h4></a>
+                        </li>
+                        <li class="nav-item" style="padding-top:0.75rem">
+                            <a class="nav-link" href="@Url.Action("FAQ", "Home")"><h4>FAQ</h4></a>
+                        </li>
+                        <li class="nav-item" style="padding-top:0.75rem">
+                            <a class="nav-link" href="@Url.Action("About", "Home")"><h4>About</h4></a>
+                        </li>
+                    </ul>
+                 
+                    <form id="form" role="search" class="form-inline my-2 my-lg-0" style="display:inline-flex; min-width:20rem; padding-inline:0.5rem" method="get" asp-action="Search" asp-controller="Forum">
+                        <input style="display:inline" class="form-control mr-sm-2" type="search" id="query" name="searchString" placeholder="Search" aria-label="Search through site content">
+                        <button style="display:inline" class="btn btn-dark my-2 my-sm-0" id="searchBtn" type="submit">Search</button>
+                    </form>
+
+                    <div style="width: 5rem">
+                        <a class="nav-link" href="@Url.Action("UserLogin", "Home")" style="display: flex 1">
+                            <img src="/Images/User.png" alt="" width="100%" height="100%" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <p></p>
+        <p></p>
+        <p></p>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer>
+            <div class="container">
+                &copy; 2023 - BucOverflow - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </div>
+</body>
+</html>
+
+
+
+
+<script>
+    var input = document.getElementById("searchString");
+    input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementsByTagName("form")[0].submit();
+        }
+    });
+</script>
+
+@*<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+    </li>*@

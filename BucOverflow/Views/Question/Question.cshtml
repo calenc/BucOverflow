@@ -1,0 +1,88 @@
+﻿@model BucOverflow.Models.QuestionModel
+@{
+    List<AnswerModel> answers = ViewBag.answers;
+    ViewData["Title"] = Model.Title;
+    ViewData["QuestionBody"] = Model.UserText;
+    ViewData["TimeAsked"] = Model.DateAsked;
+    ViewData["AnsweringUser"] = "Test User";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<div style="padding-inline: 5%">
+    <div class="align-left">
+        <h1 class="display-4">
+            <br /><strong>@ViewData["Title"]</strong>
+        </h1>
+    </div>
+
+    <div class="align-left">
+        <p>
+            Asked: @ViewData["TimeAsked"]
+        </p>
+    </div>
+
+    <div style="border: 1px solid darkgrey">
+        <p style="padding: 1%;">
+            @ViewData["QuestionBody"]
+        </p>
+    </div>
+    <br />
+    <form method="post" action="@Url.Action("AddAnswer", "Answer")">
+        <div>
+            <br />
+            @Html.HiddenFor(model => model.QuestionID)
+            <div>
+                <strong><label><h4>Post a reply</h4></label></strong>
+                <div style="padding-block: 1%">
+                    <textarea style="resize: none;" name="AnswerText" rows="8" cols="50"></textarea>
+                </div>
+                <button class="btn btn-secondary" type="submit">Post Answer</button>
+            </div>
+    </form>
+    <br />
+    <br />
+    <h3>Answers</h3>
+    <br />
+    @{
+        if (answers.Count == 0)
+        {
+            <div>
+                <p style="padding: 1%;">
+                    <h4>There are no answers at this time.</h4>
+                </p>
+            </div>
+            <br />
+            <div />
+            <br />
+        }
+        else
+        {
+            foreach (var a in answers)
+            {
+                <div style="border: 1px solid darkgrey;">
+                    <label style="padding: 1%">
+                        <strong style="padding-bottom: 15px; border-bottom-style: solid; border-bottom-width: 3.1px; width: fit-content;">@ViewData["AnsweringUser"]</strong>
+                    </label>
+                    <p style="padding: 1%;">
+                        @Html.Raw(a.AnswerText)
+                    </p>
+                </div>
+                <br />
+                <div />
+            }
+        }
+    }
+
+    <script>
+        $(document).ready(function () {
+            $('form').submit(function () {
+                var answerText = $('textarea[name="AnswerText"]').val();
+                if ($.trim(answerText) === '') {
+                    alert('Answer cannot be empty.');
+                    return false;
+                }
+            });
+        });
+    </script>

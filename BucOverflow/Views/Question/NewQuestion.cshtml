@@ -1,0 +1,53 @@
+﻿@model BucOverflow.Models.QuestionModel
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<br />
+<br />
+<form method="post" action="@Url.Action("PostQuestion", "Question")">
+    <div style="padding-inline: 5%">
+        <div class="align-left">
+            <h1 class="display-4">
+                <label><strong>Question Title</strong></label>
+                <h2><input type="text" name="Title" style="border: 1px solid darkgrey"/></h2>
+            </h1>
+        </div>
+        <br />
+        <br />
+        <div style="width: 45rem; height: 30rem">
+            <h4><strong>Explain your question in more detail:</strong></h4>
+            <textarea name="UserText" style="border: 1px solid darkgrey; width:inherit; height:inherit; resize:none"></textarea>
+            <br />
+            <button class="btn btn-secondary" type="submit" style="float:right">Submit Question</button>
+        </div>
+    </div>
+</form>
+<br />
+<br />
+<br />
+<br />
+
+<script>
+    $(document).ready(function () {
+            $('form').submit(function () {
+                var answerText = $('textarea[name="UserText"]').val();
+                if ($.trim(answerText) === '') {
+                    alert('Question body cannot be empty.');
+                    return false;
+                }
+            });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+            $('form').submit(function () {
+                var answerText = $('input[name="Title"]').val();
+                if ($.trim(answerText) === '') {
+                    alert('Question title cannot be empty.');
+                    return false;
+                }
+            });
+    });
+</script>

@@ -1,0 +1,13 @@
+﻿@model BucOverflow.Models.UserModel
+@{
+    List<AnswerModel> answers = ViewBag.answers;
+    ViewData["UserID"] = Model.UserID;
+    ViewData["Email"] = Model.Email;
+    ViewData["Username"] = "";
+}
+
+
+<!--This indeed did not work. Please fix.-->
+<div>
+    <p>please work</p>
+</div>

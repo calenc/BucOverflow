@@ -1,0 +1,5 @@
+MVP Document
+
+- AQ Webpage
+- Accepts text in the form of questions and answers
+- Host and access outside of ETSU domain
